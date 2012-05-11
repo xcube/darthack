@@ -15,7 +15,7 @@ class dartInvaders {
 
   dartInvaders() {
     gameObjects = new List<GameObject>();
-    frame = new GameObject();
+    frame = new GameScreen();
   }
 
   void startGame() {
