@@ -20,11 +20,24 @@ class GameObject {
     
   }
 
-  bool collide(GameObject gameObject) {
-    // TODO
+  /* check whether the given game object collides with this one */
+  bool collide(GameObject other) {
+    return !((other.minX() > this.maxX()) ||
+        (this.minX() > other.maxX()) ||
+        (other.minY() > this.maxY()) ||
+        (this.minY() > other.maxY()));
   }
 
-  bool within(GameObject gameObject) {
-    // TODO
+  /* is the given GameObject contained within this one */
+  bool within(GameObject other) {
+    return ((other.minX() > this.minX()) &&
+        (other.maxX() < this.maxX()) &&
+        (other.minY() > this.minY()) &&
+        (other.maxY() < this.maxY()));
   }
+  
+  int minX() => x;
+  int maxX() => x + width;
+  int minY() => y;
+  int maxY() => y + height;
 }
