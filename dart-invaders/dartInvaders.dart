@@ -3,6 +3,7 @@
 #source('dart/GameScreen.dart');
 #source('dart/Ship.dart');
 #source('dart/PlayerShip.dart');
+#source('dart/Container.dart');
 
 
 class dartInvaders {
