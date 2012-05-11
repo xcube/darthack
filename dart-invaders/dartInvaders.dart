@@ -1,5 +1,6 @@
 #import('dart:html');
 #source('dart/GameObject.dart');
+#source('dart/MovingObject.dart');
 #source('dart/GameScreen.dart');
 #source('dart/Ship.dart');
 #source('dart/PlayerShip.dart');
