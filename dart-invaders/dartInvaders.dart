@@ -24,6 +24,7 @@ class dartInvaders {
 
   void update() {
     write((++frameCount).toString());
+    frame.paint();
   }
 
   void run() {
