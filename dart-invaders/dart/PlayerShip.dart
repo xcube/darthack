@@ -13,7 +13,6 @@ class PlayerShip extends Ship {
     canvas.on.keyDown.add((Event e) {
       // TODO - check what key was pressed
       x++;
-      paint();
     }, true);
   }
 
