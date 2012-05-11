@@ -4,11 +4,11 @@ class GameObject {
   Point pos;
   int width, height;
   CanvasRenderingContext2D ctx;
+  CanvasElement canvas;
   
-
   GameObject(int x, int y, int this.width, int this.height) {
     this.pos = new Point(x, y);
-    CanvasElement canvas = document.query('#game-canvas');
+    this.canvas = document.query('#game-canvas');
     this.ctx = canvas.getContext("2d");
   }
 
