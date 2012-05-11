@@ -4,11 +4,12 @@ class GameObject {
   int x, y;
   int width, height;
   CanvasRenderingContext2D ctx;
+  CanvasElement canvas;
   
 
   GameObject(int this.x, int this.y, int this.width, int this.height) {
     
-    CanvasElement canvas = document.query('#game-canvas');
+    this.canvas = document.query('#game-canvas');
     this.ctx = canvas.getContext("2d");
   }
 
