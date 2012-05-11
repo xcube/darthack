@@ -11,7 +11,7 @@ class GameObject {
     
   }
 
-  void tick(delta) {
+  void tick(double delta) {
     
   }
 
