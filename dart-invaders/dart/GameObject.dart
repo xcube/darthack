@@ -1,13 +1,13 @@
 
 class GameObject {
 
-  int x, y;
+  Point pos;
   int width, height;
   CanvasRenderingContext2D ctx;
   
 
-  GameObject(int this.x, int this.y, int this.width, int this.height) {
-    
+  GameObject(int x, int y, int this.width, int this.height) {
+    this.pos = new Point(x, y);
     CanvasElement canvas = document.query('#game-canvas');
     this.ctx = canvas.getContext("2d");
   }
@@ -36,8 +36,8 @@ class GameObject {
         (other.maxY() < this.maxY()));
   }
   
-  int minX() => x;
-  int maxX() => x + width;
-  int minY() => y;
-  int maxY() => y + height;
+  int minX() => pos.x;
+  int maxX() => pos.x + width;
+  int minY() => pos.y;
+  int maxY() => pos.y + height;
 }
