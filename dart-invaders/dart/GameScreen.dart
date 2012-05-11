@@ -18,9 +18,9 @@ class GameScreen extends GameObject implements Container {
     ctx.clearRect(0, 0, width, height);
     ctx.fillStyle = '#ffffff';
     ctx.strokeStyle = '#000000';
-    ctx.fillRect(x, y, width, height);
+    ctx.fillRect(pos.x, pos.y, width, height);
     
-    ctx.rect(x, y, width, height);
+    ctx.rect(pos.x, pos.y, width, height);
     ctx.fillStyle = '#000000';
     ctx.fill();
     ctx.stroke();
