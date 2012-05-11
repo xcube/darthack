@@ -1,5 +1,5 @@
 
-class PlayerShip extends GameObject {
+class PlayerShip extends Ship {
 
   static final WIDTH = 50;
   static final HEIGHT = 50;
@@ -7,10 +7,10 @@ class PlayerShip extends GameObject {
   PlayerShip() : super(0, 0, WIDTH, HEIGHT) {
 
     // place player ship at the bottom in the middle
-    y = canvas.height - HEIGHT;
-    x = (canvas.width / 2) - (WIDTH / 2);
+    pos.y = canvas.height - HEIGHT;
+    pos.x = (canvas.width / 2) - (WIDTH / 2);
 
-    ctx.on.keyDown.add((Event e) {
+    canvas.on.keyDown.add((Event e) {
       // TODO - check what key was pressed
       x++;
       paint();

@@ -1,8 +1,7 @@
 
 class Ship extends GameObject {
 
-  Ship() : super(0, 0, 24, 24) {
-    
+  Ship(int x, int y, int width, int height) : super(x, y, width, height) {
   }
   
   void paint() {
