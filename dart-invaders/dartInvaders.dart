@@ -10,6 +10,7 @@
 #source('dart/PlayerShip.dart');
 #source('dart/GameContext.dart');
 #source('dart/Util.dart');
+#source('dart/GameSounds.dart');
 
 
 class dartInvaders {
@@ -22,6 +23,9 @@ class dartInvaders {
 
   dartInvaders() {
     GameContext gameContext = new GameContext();
+    // TODO - play main music instead
+    gameContext.gameSounds.playExplosion();
+
     lastTime = Util.currentTimeMillis();
 
     gameScreen = new GameScreen(gameContext);
