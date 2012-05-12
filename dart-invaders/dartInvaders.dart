@@ -35,7 +35,8 @@ class dartInvaders {
     currentLevel = 0;
     levels = [ "resources/level1.json" ];
     Player player = new Player();
-    GameContext gameContext = new GameContext(player);
+    GameSounds gameSounds = new GameSounds();
+    GameContext gameContext = new GameContext(player, gameSounds);
     lastTime = Util.currentTimeMillis();
 
     gameScreen = ScreenLoader.loadScreen(gameContext, levels[currentLevel]);
@@ -47,9 +48,6 @@ class dartInvaders {
 
     Explosion exp = new Explosion(gameContext, 400, 300);
     gameScreen.addChild(exp);
-
-    GameSounds gameSounds = new GameSounds();
-    gameSounds.playExplosion();
   }
 
   void startGame() {
