@@ -23,7 +23,6 @@ class ScorePanel extends GameObject {
     gameContext.ctx.rect(pos.x, pos.y, width, height);
     gameContext.ctx.fillStyle = '#030303';
     gameContext.ctx.fill();
-    gameContext.ctx.stroke();
     gameContext.ctx.closePath();
   }
 

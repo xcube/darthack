@@ -6,7 +6,7 @@ class Player {
   List<Weapon> weapons;
   PlayerShip ship;
 
-  Player(GameContext gameContext) {
+  Player() {
     this.score = 0;
     this.lives = 3;
     this.energy = 100;

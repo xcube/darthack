@@ -26,11 +26,12 @@ class dartInvaders {
   int lastTime;
 
   dartInvaders() {
-    GameContext gameContext = new GameContext();
+    Player player = new Player();
+    GameContext gameContext = new GameContext(player);
     lastTime = Util.currentTimeMillis();
 
     gameScreen = new GameScreen(gameContext);
-    Player player = new Player(gameContext);
+
     PlayerShip playerShip = new PlayerShip(gameContext, player);
     ScorePanel scorePanel = new ScorePanel(gameContext, player);
     gameScreen.addChild(scorePanel);

@@ -1,8 +1,8 @@
 
 class PlayerShip extends Ship {
 
-  static final int WIDTH = 50;
-  static final int HEIGHT = 50;
+  static final int WIDTH = 32;
+  static final int HEIGHT = 32;
   static final int KEY_LEFT = 37;
   static final int KEY_RIGHT = 39;
   static final int KEY_SPACE = 32;
