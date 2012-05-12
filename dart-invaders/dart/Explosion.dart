@@ -33,5 +33,10 @@ class Explosion extends ContainerImpl {
     for (var f in toRemove) {
       removeChild(f);
     }
+
+    // if there are no fragments left then remove the explosion itself
+    if (0 == children.length) {
+      remove();
+    }
   }
 }
