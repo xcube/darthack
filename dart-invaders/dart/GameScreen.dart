@@ -1,8 +1,7 @@
 
-class GameScreen extends GameObject implements Container {
+class GameScreen extends ContainerImpl  {
   
   bool showRefreshRate;
-  List<GameObject> children;
   
   GameScreen() : super(0, 0, 800, 600) {
     this.showRefreshRate = false;
@@ -25,20 +24,15 @@ class GameScreen extends GameObject implements Container {
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
-    for(GameObject child in children) {
-      child.paint();
-    }
+    
+    paintChildren();
   }
 
   void tick(delta) {
-    
+    tickChildren(delta);
   }
   
-  bool hasChildren() {
-    return children.length > 0;
-  }
+
   
-  void addChild(GameObject gameObject) {
-    this.children.add(gameObject);
-  }
+
 }
