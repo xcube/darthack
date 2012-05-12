@@ -3,9 +3,11 @@
 #source('dart/Container.dart');
 #source('dart/ContainerImpl.dart');
 #source('dart/MovingObject.dart');
-#source('dart/AnimatedImageObject.dart');
 #source('dart/GameScreen.dart');
 #source('dart/Ship.dart');
+#source('dart/AnimatedImageObject.dart');
+#source('dart/PathAnimatedImageObject.dart');
+#source('dart/Bomb.dart');
 #source('dart/AlienShip.dart');
 #source('dart/PlayerShip.dart');
 #source('dart/GameContext.dart');
