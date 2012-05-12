@@ -3,6 +3,7 @@
 #source('dart/Container.dart');
 #source('dart/ContainerImpl.dart');
 #source('dart/MovingObject.dart');
+#source('dart/AnimatedImageObject.dart');
 #source('dart/GameScreen.dart');
 #source('dart/Ship.dart');
 #source('dart/AlienShip.dart');
@@ -29,7 +30,7 @@ class dartInvaders {
 
     List<Point> alienPath = [new Point(100, 100), new Point(300, 50), new Point(400, 100), new Point(450, 150),  new Point(400, 200),
                              new Point(300, 250), new Point(50, 200)];
-    AlienShip alien = new AlienShip(gameContext, 10, 10, alienPath, 25.0);
+    AlienShip alien = new AlienShip(gameContext, 10, 10, alienPath, 25.0, 'img/Space Invaders 2.png');
     alien.setPathEndBehaviour(MovingObject.PATH_END_REPEAT);
     gameScreen.addChild(alien);
   }
