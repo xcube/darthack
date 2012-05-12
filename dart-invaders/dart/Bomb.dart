@@ -9,7 +9,10 @@ class Bomb extends AnimatedImageObject implements Weapon{
 
   void tick(double delta) {
     super.tick(delta);
-
+    if(detectCollision()) {
+      gameContext.getPlayerShip().takeHitFrom(this);
+      remove();
+    }
     if (pos.y > GameScreen.GAME_HEIGHT) {
       remove();
     }
@@ -17,5 +20,9 @@ class Bomb extends AnimatedImageObject implements Weapon{
 
   int getDamage() {
     return damage;
+  }
+
+  bool detectCollision() {
+    return collide(gameContext.getPlayerShip());
   }
 }
