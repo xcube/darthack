@@ -1,14 +1,16 @@
 
 class GameScreen extends ContainerImpl  {
 
+  static final int GAME_WIDTH = 800;
+  static final int GAME_HEIGHT = 600;
+
   bool showRefreshRate;
 
-  GameScreen(GameContext gameContext) : super(gameContext, 0, 0, 800, 600) {
+  GameScreen(GameContext gameContext) : super(gameContext, 0, 0, GAME_WIDTH, GAME_HEIGHT) {
     this.showRefreshRate = false;
   }
 
-  GameScreen.Options(GameContext gameContext, bool this.showRefreshRate) : super(gameContext, 0, 0, 800, 600) {
-    this.children = new List<GameObject>();
+  GameScreen.Options(GameContext gameContext, bool this.showRefreshRate) : super(gameContext, 0, 0, GAME_WIDTH, GAME_HEIGHT) {
   }
 
   void paint() {
