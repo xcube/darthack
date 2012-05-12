@@ -26,6 +26,6 @@ class Util {
   }
 
   static double toRad(int deg) {
-    return deg * 180 / Math.PI;
+    return deg * Math.PI / 180;
   }
 }
