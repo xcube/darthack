@@ -2,6 +2,7 @@
 class Ship extends GameObject {
 
   Ship(GameContext gameContext, int x, int y, int width, int height) : super(gameContext, x, y, width, height) {
+
   }
 
   void paint() {
@@ -14,7 +15,7 @@ class Ship extends GameObject {
     gameContext.ctx.closePath();
   }
 
-  void rotate(num deg, int dir) {
+  void rotate(num deg) {
     gameContext.ctx.rotate(Util.toRad(deg));
   }
 
