@@ -3172,6 +3172,9 @@ ContainerImpl.prototype.tickChildren = function(delta) {
     child.tick(delta);
   }
 }
+ContainerImpl.prototype.removeChildren = function() {
+  this.children.clear$_();
+}
 ContainerImpl.prototype.minX = function() {
   return Util.findMin(this.children, (function (c) {
     return c.minX();
@@ -3475,10 +3478,11 @@ PlayerShip.prototype.takeHitFrom = function(weapon) {
   return this.player.takeHitFrom(weapon);
 }
 function GameContext(player, gameSounds) {
-  this.player = player;
   this.gameSounds = gameSounds;
   this.canvas = get$$document().query("#game-canvas");
   this.ctx = this.canvas.getContext("2d");
+  this.player = player;
+  player.gameContext = this;
 }
 GameContext.prototype.getPlayerShip = function() {
   return this.player.ship;
@@ -3552,8 +3556,8 @@ GameSounds.prototype.playFire = function() {
 }
 function Player() {
   this.score = (0);
-  this.lives = (3);
-  this.energy = (100);
+  this.lives = (1);
+  this.energy = (25);
   this.weapons = new Array();
 }
 Player.prototype.takeHitFrom = function(weapon) {
@@ -3563,6 +3567,8 @@ Player.prototype.takeHitFrom = function(weapon) {
     var lifesAfterHit = this.lives - (1);
     print$("Lifes after hit : " + lifesAfterHit);
     if (lifesAfterHit == (0)) {
+      this.ship.remove();
+      this.gameOver("Game Over");
     }
     else {
       this.lives = this.lives - (1);
@@ -3577,6 +3583,17 @@ Player.prototype.takeHitFrom = function(weapon) {
 }
 Player.prototype.scoreHit = function(alienShip) {
   this.score = this.score + alienShip.getPointsWorth();
+}
+Player.prototype.gameOver = function(text) {
+  var screen = this.gameContext.getScreen();
+  screen.removeChildren();
+  var centerX = (screen.width / (2)) - (150);
+  var centerY = screen.height / (2);
+  screen.addChild(new Explosion(this.gameContext, (100), (50)));
+  screen.addChild(new Explosion(this.gameContext, (700), (50)));
+  screen.addChild(new Explosion(this.gameContext, (100), (450)));
+  screen.addChild(new Explosion(this.gameContext, (700), (450)));
+  screen.addChild(new TextObject(this.gameContext, text, "#CD2626", "bold 48px sans-serif", centerX, centerY));
 }
 $inherits(ScorePanel, GameObject);
 function ScorePanel(gameContext, currentPlayer) {
@@ -3627,6 +3644,19 @@ Missile.prototype.detectCollision = function() {
       }
     }
   }
+}
+$inherits(TextObject, GameObject);
+function TextObject(gameContext, text, colour, fontStyle, x, y) {
+  this.text = text;
+  this.colour = colour;
+  this.fontStyle = fontStyle;
+  GameObject.call(this, gameContext, x, y, (0), (0));
+}
+TextObject.prototype.paint = function() {
+  this.gameContext.ctx.fillStyle = this.colour;
+  this.gameContext.ctx.font = this.fontStyle;
+  this.gameContext.ctx.textBaseline = "bottom";
+  this.gameContext.ctx.fillText(this.text, this.pos.x, this.pos.y);
 }
 function ScreenLoader() {}
 ScreenLoader.loadScreen = function(gameContext, levelFile) {

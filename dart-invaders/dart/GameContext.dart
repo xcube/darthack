@@ -7,9 +7,11 @@ class GameContext {
   GameScreen screen;
   GameSounds gameSounds;
 
-  GameContext(Player this.player, GameSounds this.gameSounds) {
+  GameContext(Player player, GameSounds this.gameSounds) {
     this.canvas = document.query('#game-canvas');
     this.ctx = canvas.getContext("2d");
+    this.player = player;
+    player.gameContext = this;
   }
 
   PlayerShip getPlayerShip() {

@@ -49,6 +49,10 @@ class ContainerImpl extends GameObject implements Container {
     }
   }
 
+  void removeChildren() {
+    children.clear();
+  }
+
   int minX() {
     return Util.findMin(children, (c) => c.minX());
   }
