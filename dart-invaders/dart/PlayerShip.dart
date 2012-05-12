@@ -33,6 +33,7 @@ class PlayerShip extends Ship {
       } else if (action == KEY_SPACE) {
         if (lastShoot == 0 || lastShoot < Util.currentTimeMillis() - SHOOT_RATE_MILLIS ) {
           lastShoot = Util.currentTimeMillis();
+          gameContext.gameSounds.playFire();
           Missile missile = new Missile(gameContext, player, pos.x + 6, pos.y - 7, 40);
           parent.addChild(missile);
         }

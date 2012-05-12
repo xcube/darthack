@@ -13,6 +13,7 @@ class Explosion extends ContainerImpl {
       AnimatedImageObject frag = new AnimatedImageObject(ctx, x, y, 4, 4, direction, null);
       addChild(frag);
     }
+    ctx.gameSounds.playExplosion();
   }
 
   void paint() {
