@@ -42,7 +42,7 @@ class dartInvaders {
   }
 
   void update() {
-    write((++frameCount).toString());
+    ++frameCount;
     int now = Util.currentTimeMillis();
     double delta = Math.min((now - lastTime) / 1000.0, 0.1);
     lastTime = now;
@@ -55,10 +55,6 @@ class dartInvaders {
     startGame();
   }
 
-  void write(String message) {
-    // the HTML library defines a global "document" variable
-    document.query('#status').innerHTML = message;
-  }
 }
 
 void main() {
