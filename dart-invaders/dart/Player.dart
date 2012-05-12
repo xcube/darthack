@@ -19,8 +19,10 @@ class Player {
 
   void takeHitFrom(Weapon weapon) {
     int energyAfterHit = energy - weapon.getDamage();
+    print("Energy after hit : "+energyAfterHit);
     if(energyAfterHit <= 0) {
        int lifesAfterHit = lives - 1;
+       print("Lifes after hit : "+lifesAfterHit);
        if(lifesAfterHit == 0) {
          // TODO: game over
        } else {

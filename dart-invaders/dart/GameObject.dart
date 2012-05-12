@@ -64,4 +64,8 @@ class GameObject {
   void blink() {
 
   }
+
+  bool detectCollision() {
+    return false;
+  }
 }
