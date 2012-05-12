@@ -17,7 +17,8 @@ class Player {
     this.weapons.add(weapon);
   }
 
-  void takeHitFrom(Weapon weapon) {
+  /* Return true if player lost a live, false otherwise. */
+  bool takeHitFrom(Weapon weapon) {
     int energyAfterHit = energy - weapon.getDamage();
     print("Energy after hit : "+energyAfterHit);
     if(energyAfterHit <= 0) {
@@ -28,9 +29,15 @@ class Player {
        } else {
          lives -= 1;
          energy = 100;
+         return true;
        }
     } else {
       energy -= weapon.getDamage();
     }
+    return false;
+  }
+
+  void scoreHit(AlienShip alienShip) {
+    this.score += alienShip.getPointsWorth();
   }
 }
