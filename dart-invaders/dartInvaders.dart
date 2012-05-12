@@ -12,11 +12,9 @@ class dartInvaders {
   static final int REFRESH_INTERVAL = 250;
 
   int frameCount = 1;
-  List<GameObject> gameObjects;
   GameScreen gameScreen;
 
   dartInvaders() {
-    gameObjects = new List<GameObject>();
     gameScreen = new GameScreen();
     gameScreen.addChild(new PlayerShip());
   }
