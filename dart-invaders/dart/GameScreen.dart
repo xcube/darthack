@@ -8,6 +8,7 @@ class GameScreen extends ContainerImpl  {
 
   GameScreen(GameContext gameContext) : super(gameContext, 0, 0, GAME_WIDTH, GAME_HEIGHT) {
     this.showRefreshRate = false;
+    gameContext.screen = this;
   }
 
   GameScreen.Options(GameContext gameContext, bool this.showRefreshRate) : super(gameContext, 0, 0, GAME_WIDTH, GAME_HEIGHT) {

@@ -25,7 +25,12 @@ class Bomb extends AnimatedImageObject implements Weapon{
 
   void detectCollision() {
     if(collide(gameContext.getPlayerShip())) {
-      gameContext.getPlayerShip().takeHitFrom(this);
+      bool lostLife = gameContext.getPlayerShip().takeHitFrom(this);
+
+      if(lostLife) {
+        Explosion explosion = new Explosion(gameContext, pos.x, pos.y);
+        gameContext.getScreen().addChild(explosion);
+      }
       remove();
     }
   }

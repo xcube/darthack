@@ -1,6 +1,9 @@
 class AlienShip extends PathAnimatedImageObject {
 
-  AlienShip(GameContext gameContext, int width, int height, List<Point> wayPoints, double speed, String bitmap) : super(gameContext, width, height, wayPoints, speed, bitmap) {
+  int pointsWorth;
+
+  AlienShip(GameContext gameContext, int width, int height, List<Point> wayPoints, double speed, String bitmap, int points) : super(gameContext, width, height, wayPoints, speed, bitmap) {
+    this.pointsWorth = points;
   }
 
   void tick(double delta) {
@@ -18,4 +21,7 @@ class AlienShip extends PathAnimatedImageObject {
     }
   }
 
+  int getPointsWorth() {
+    return pointsWorth;
+  }
 }

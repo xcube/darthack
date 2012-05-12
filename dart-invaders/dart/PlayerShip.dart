@@ -30,8 +30,8 @@ class PlayerShip extends Ship {
     });
   }
 
-  void takeHitFrom(Weapon weapon) {
-      player.takeHitFrom(weapon);
+  bool takeHitFrom(Weapon weapon) {
+      return player.takeHitFrom(weapon);
   }
 
 }
