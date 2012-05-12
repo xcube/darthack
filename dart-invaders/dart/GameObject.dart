@@ -65,7 +65,5 @@ class GameObject {
 
   }
 
-  bool detectCollision() {
-    return false;
-  }
+  void detectCollision() {}
 }
