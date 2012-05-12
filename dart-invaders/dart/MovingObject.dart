@@ -6,7 +6,7 @@ class MovingObject extends GameObject {
   double pathSpeed;
   double timeToNextPoint;
   
-  MovingObject(x, y, width, height, Point delta) : super(x, y, width, height) {
+  MovingObject(GameContext gameContext, int x, int y, int width, int height, Point delta) : super(gameContext, x, y, width, height) {
     this.delta = new Point(delta.x, delta.y);
     this.path = null;
   }

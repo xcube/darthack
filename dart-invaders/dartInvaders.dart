@@ -5,6 +5,7 @@
 #source('dart/Ship.dart');
 #source('dart/PlayerShip.dart');
 #source('dart/Container.dart');
+#source('dart/GameContext.dart');
 
 
 class dartInvaders {
@@ -15,8 +16,11 @@ class dartInvaders {
   GameScreen gameScreen;
 
   dartInvaders() {
-    gameScreen = new GameScreen();
-    gameScreen.addChild(new PlayerShip());
+    GameContext gameContext = new GameContext();
+
+    gameScreen = new GameScreen(gameContext);
+    PlayerShip playerShip = new PlayerShip(gameContext);
+    gameScreen.addChild(playerShip);
   }
 
   void startGame() {
