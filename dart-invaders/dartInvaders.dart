@@ -28,13 +28,17 @@ class dartInvaders {
   int frameCount = 1;
   GameScreen gameScreen;
   int lastTime;
+  int currentLevel;
+  List<String> levels;
 
   dartInvaders() {
+    currentLevel = 0;
+    levels = [ "resources/level1.json" ];
     Player player = new Player();
     GameContext gameContext = new GameContext(player);
     lastTime = Util.currentTimeMillis();
 
-    gameScreen = ScreenLoader.loadScreen(gameContext, "resources/level1.json");
+    gameScreen = ScreenLoader.loadScreen(gameContext, levels[currentLevel]);
 
     PlayerShip playerShip = new PlayerShip(gameContext, player);
     ScorePanel scorePanel = new ScorePanel(gameContext, player);
