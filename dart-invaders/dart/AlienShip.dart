@@ -8,7 +8,7 @@ class AlienShip extends PathAnimatedImageObject {
 
     if (Math.random() > 0.99) {
       if (null != parent) {
-        Bomb bomb = new Bomb(gameContext, pos.x, pos.y, 40);
+        Bomb bomb = new Bomb(gameContext, pos.x + 16, pos.y + 20, 40);
         try {
           parent.addChild(bomb);
         } catch (final NoSuchMethodException e) {
