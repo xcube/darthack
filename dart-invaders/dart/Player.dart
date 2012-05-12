@@ -27,7 +27,7 @@ class Player {
        print("Lifes after hit : "+lifesAfterHit);
        if(lifesAfterHit == 0) {
          ship.remove();
-         gameOver();
+         gameOver('Game Over');
        } else {
          lives -= 1;
          energy = 100;
@@ -47,7 +47,7 @@ class Player {
     return lives <= 0 ? true : false;
   }
 
-  void gameOver() {
+  void gameOver(String text) {
     GameScreen screen = gameContext.getScreen();
     screen.removeChildren();
     int centerX = (screen.width / 2) - 150;
@@ -56,7 +56,7 @@ class Player {
     screen.addChild(new Explosion(gameContext, 700, 50));
     screen.addChild(new Explosion(gameContext, 100, 450));
     screen.addChild(new Explosion(gameContext, 700, 450));
-    screen.addChild(new TextObject(gameContext, 'Game Over', '#CD2626', 'bold 48px sans-serif', centerX, centerY));
+    screen.addChild(new TextObject(gameContext, text, '#CD2626', 'bold 48px sans-serif', centerX, centerY));
 
   }
 }
