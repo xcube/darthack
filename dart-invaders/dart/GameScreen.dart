@@ -37,8 +37,10 @@ class GameScreen extends ContainerImpl  {
     // Do nothing
   }
 
-  void translte(int xUnits, int yUnits) {
+  void translate(int xUnits, int yUnits) {
     // Do nothing
   }
+
+
 
 }
