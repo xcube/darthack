@@ -3,7 +3,7 @@ class Util {
     return (new Date.now()).value;
   }
 
-  static int findMin(List l, valueFunc) {
+  static int findMin(List l, int valueFunc(Object o)) {
     int min = 9999999;
     for (var c in l) {
       int cmin = valueFunc(c);
@@ -14,7 +14,7 @@ class Util {
     return min;
   }
 
-  static int findMax(List l, valueFunc) {
+  static int findMax(List l, int valueFunc(Object o)) {
     int max = -9999999;
     for (var c in l) {
       int cmax = valueFunc(c);
