@@ -35,7 +35,7 @@ class dartInvaders {
   dartInvaders() {
     currentLevel = 0;
     levels = [ "resources/level1.json" ];
-    Player player = new Player();
+    Player player = new Player(3, 130);
     GameContext gameContext = new GameContext(player);
     lastTime = Util.currentTimeMillis();
 
