@@ -8,6 +8,7 @@
 #source('dart/AnimatedImageObject.dart');
 #source('dart/PathAnimatedImageObject.dart');
 #source('dart/Bomb.dart');
+#source('dart/Explosion.dart');
 #source('dart/AlienShip.dart');
 #source('dart/PlayerShip.dart');
 #source('dart/GameContext.dart');
@@ -16,6 +17,7 @@
 #source('dart/Player.dart');
 #source('dart/Weapon.dart');
 #source('dart/ScorePanel.dart');
+#source('dart/Missile.dart');
 
 
 class dartInvaders {
@@ -43,6 +45,9 @@ class dartInvaders {
     AlienShip alien = new AlienShip(gameContext, 48, 48, alienPath, 25.0, 'img/Space Invaders 2.png');
     alien.setPathEndBehaviour(MovingObject.PATH_END_REPEAT);
     gameScreen.addChild(alien);
+
+    Explosion exp = new Explosion(gameContext, 400, 300);
+    gameScreen.addChild(exp);
   }
 
   void startGame() {
