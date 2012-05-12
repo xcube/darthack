@@ -43,7 +43,7 @@ class dartInvaders {
     levelCountdown = 0;
     banner = null;
     levels = [ "resources/level1.json", "resources/level2.json" ];
-    Player player = new Player();
+    Player player = new Player(3, 130);
 
     GameSounds gameSounds = new GameSounds();
     GameContext gameContext = new GameContext(player, gameSounds);

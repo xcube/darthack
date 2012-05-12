@@ -3,14 +3,16 @@ class Player {
   int score;
   int lives;
   int energy;
+  int perLifeEnergy;
+  int lowEnergyPercentage;
   List<Weapon> weapons;
   PlayerShip ship;
   GameContext gameContext;
 
-  Player() {
+  Player(int this.lives, int this.energy) {
     this.score = 0;
-    this.lives = 1;
-    this.energy = 25;
+    this.perLifeEnergy = energy;
+    this.lowEnergyPercentage = 0.25;
     this.weapons = new List<Weapon>();
   }
 
@@ -30,7 +32,7 @@ class Player {
          gameOver('Game Over');
        } else {
          lives -= 1;
-         energy = 100;
+         energy = perLifeEnergy;
          return true;
        }
     } else {
@@ -45,6 +47,11 @@ class Player {
 
   bool isDead() {
     return lives <= 0 ? true : false;
+  }
+
+  bool hasLowEnergy() {
+    int lowEnergyPct = (perLifeEnergy / 100) * lowEnergyPercentage;
+    return (energy / 100) < lowEnergyPct;
   }
 
   void gameOver(String text) {

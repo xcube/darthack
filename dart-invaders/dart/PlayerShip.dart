@@ -10,12 +10,15 @@ class PlayerShip extends Ship {
 
   // time when the last missile was fired
   int lastShoot = 0;
+  int lastPaint = 0;
+  static final int BLINK_RATE_MILIS = 1 * 1000;
   static final int SHOOT_RATE_MILLIS = 1 * 1000;
   Player player;
 
   PlayerShip(GameContext gameContext, Player player) : super(gameContext, 0, 0, WIDTH, HEIGHT, 'img/Space Invaders 1.png') {
     this.player = player;
     this.player.ship = this;
+    this.lastPaint = 0;
     // place player ship at the bottom in the middle
     pos.y = gameContext.canvas.height - HEIGHT;
     pos.x = (gameContext.canvas.width / 2) - (WIDTH / 2);
@@ -38,6 +41,19 @@ class PlayerShip extends Ship {
     });
   }
 
+  /*
+  void paint() {
+    if(player.hasLowEnergy() && (lastPaint == 0 || lastPaint < (Util.currentTimeMillis() - BLINK_RATE_MILIS))) {
+        print('Hidding ship....');
+        loadBitmap('img/hidden.png');
+        lastPaint = Util.currentTimeMillis();
+    } else {
+      print('Showing ship....');
+      loadBitmap('img/Space Invaders 1.png');
+    }
+
+  }
+  */
   bool takeHitFrom(Weapon weapon) {
       return player.takeHitFrom(weapon);
   }
