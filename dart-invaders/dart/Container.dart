@@ -13,4 +13,6 @@ interface Container {
   void paintChildren();
 
   void tickChildren(double delta);
+
+  void removeChildren();
 }

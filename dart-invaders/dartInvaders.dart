@@ -18,6 +18,7 @@
 #source('dart/Weapon.dart');
 #source('dart/ScorePanel.dart');
 #source('dart/Missile.dart');
+#source('dart/TextObject.dart');
 
 
 class dartInvaders {
