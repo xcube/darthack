@@ -5,7 +5,6 @@ class GameScreen extends ContainerImpl  {
   
   GameScreen(GameContext gameContext) : super(gameContext, 0, 0, 800, 600) {
     this.showRefreshRate = false;
-    this.children = new List<GameObject>();
   }
   
   GameScreen.Options(GameContext gameContext, bool this.showRefreshRate) : super(gameContext, 0, 0, 800, 600) {
