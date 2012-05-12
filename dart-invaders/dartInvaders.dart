@@ -27,13 +27,8 @@ class dartInvaders {
   int lastTime;
 
   dartInvaders() {
-<<<<<<< HEAD
     Player player = new Player();
     GameContext gameContext = new GameContext(player);
-=======
-    GameContext gameContext = new GameContext();
-
->>>>>>> 6fa0849d4327b30c939331b495c054c081d876d9
     lastTime = Util.currentTimeMillis();
 
     gameScreen = new GameScreen(gameContext);

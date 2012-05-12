@@ -24,7 +24,8 @@ class PlayerShip extends Ship {
       } else if (action == KEY_RIGHT) {
         translate(1, 0);
       } else if (action == KEY_SPACE) {
-        // TODO shoot!!!
+//        Bomb bomb = new Bomb(gameContext, pos.x + 16, pos.y + 20, 40);
+//        parent.addChild(bomb);
       }
     });
   }
