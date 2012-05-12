@@ -1,7 +1,7 @@
 class ContainerImpl extends GameObject implements Container {
   List<GameObject> children;
   
-  ContainerImpl(int x, int y, int width, int height) : super(x, y, width, height) {
+  ContainerImpl(GameContext gameContext, int x, int y, int width, int height) : super(gameContext, x, y, width, height) {
     this.children = new List<GameObject>();
   }
   
