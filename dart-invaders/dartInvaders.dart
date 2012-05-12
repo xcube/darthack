@@ -27,8 +27,10 @@ class dartInvaders {
     PlayerShip playerShip = new PlayerShip(gameContext);
     gameScreen.addChild(playerShip);
 
-    List<Point> alienPath = [new Point(100, 100), new Point(200, 100), new Point(200, 200), new Point(100, 200)];
-    AlienShip alien = new AlienShip(gameContext, 10, 10, alienPath, 10.0);
+    List<Point> alienPath = [new Point(100, 100), new Point(300, 50), new Point(400, 100), new Point(450, 150),  new Point(400, 200),
+                             new Point(300, 250), new Point(50, 200)];
+    AlienShip alien = new AlienShip(gameContext, 10, 10, alienPath, 25.0);
+    alien.setPathEndBehaviour(MovingObject.PATH_END_REPEAT);
     gameScreen.addChild(alien);
   }
 

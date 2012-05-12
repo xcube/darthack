@@ -16,4 +16,8 @@ class AlienShip extends Ship {
     pos.x = mover.pos.x;
     pos.y = mover.pos.y;
   }
+
+  void setPathEndBehaviour(int option) {
+    mover.pathEndBehaviour = option;
+  }
 }
