@@ -6,6 +6,7 @@ class PlayerShip extends Ship {
   static final int KEY_LEFT = 37;
   static final int KEY_RIGHT = 39;
   static final int KEY_SPACE = 32;
+  static final int MOVE_PIXELS = 3;
 
   // time when the last missile was fired
   int lastShoot = 0;
@@ -23,9 +24,9 @@ class PlayerShip extends Ship {
 
       int action = e.keyCode;
       if (action == KEY_LEFT) {
-        translate(-1, 0);
+        translate(-MOVE_PIXELS, 0);
       } else if (action == KEY_RIGHT) {
-        translate(1, 0);
+        translate(MOVE_PIXELS, 0);
       } else if (action == KEY_SPACE) {
         if (lastShoot == 0 || lastShoot < Util.currentTimeMillis() - SHOOT_RATE_MILLIS ) {
           lastShoot = Util.currentTimeMillis();

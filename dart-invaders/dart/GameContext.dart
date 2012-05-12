@@ -10,6 +10,7 @@ class GameContext {
     this.canvas = document.query('#game-canvas');
     this.ctx = canvas.getContext("2d");
     this.player = player;
+    player.gameContext = this;
   }
 
   PlayerShip getPlayerShip() {

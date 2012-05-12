@@ -19,6 +19,7 @@
 #source('dart/Weapon.dart');
 #source('dart/ScorePanel.dart');
 #source('dart/Missile.dart');
+#source('dart/TextObject.dart');
 #source('dart/ScreenLoader.dart');
 
 class dartInvaders {
@@ -48,6 +49,9 @@ class dartInvaders {
 
     Explosion exp = new Explosion(gameContext, 400, 300);
     gameScreen.addChild(exp);
+
+    GameSounds gameSounds = new GameSounds();
+    gameSounds.playExplosion();
   }
 
   void startGame() {
