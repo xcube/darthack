@@ -5,6 +5,7 @@ class GameScreen extends ContainerImpl  {
   static final int GAME_HEIGHT = 600;
 
   bool showRefreshRate;
+  bool hasLoaded = false;
 
   GameScreen(GameContext gameContext) : super(gameContext, 0, 0, GAME_WIDTH, GAME_HEIGHT) {
     this.showRefreshRate = false;

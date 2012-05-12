@@ -35,7 +35,7 @@ class dartInvaders {
 
   dartInvaders() {
     currentLevel = 0;
-    levels = [ "resources/level1.json" ];
+    levels = [ "resources/level1.json", "resources/level2.json" ];
     Player player = new Player();
     gameContext = new GameContext(player);
     lastTime = Util.currentTimeMillis();
@@ -46,9 +46,6 @@ class dartInvaders {
     ScorePanel scorePanel = new ScorePanel(gameContext, player);
     gameScreen.addChild(scorePanel);
     gameScreen.addChild(playerShip);
-
-    Explosion exp = new Explosion(gameContext, 400, 300);
-    gameScreen.addChild(exp);
 
     GameSounds gameSounds = new GameSounds();
     gameSounds.playExplosion();
@@ -65,11 +62,13 @@ class dartInvaders {
     lastTime = now;
     gameScreen.tick(delta);
 
-    if (0 == aliensRemaining()) {
+    if (gameScreen.hasLoaded && (0 == aliensRemaining())) {
       ++currentLevel;
       if (currentLevel == levels.length) {
         // game complete
         gameContext.player.gameOver("YOU WON!!! :-)");
+      } else {
+        ScreenLoader.loadNewLevel(gameContext, gameScreen, levels[currentLevel]);
       }
     }
 

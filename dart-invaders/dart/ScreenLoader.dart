@@ -2,6 +2,13 @@
 class ScreenLoader {
   static GameScreen loadScreen(GameContext gameContext, String levelFile) {
     GameScreen gameScreen = new GameScreen(gameContext);
+    loadNewLevel(gameContext, gameScreen, levelFile);
+    return gameScreen;
+  }
+
+  static loadNewLevel(GameContext gameContext, GameScreen gameScreen, String levelFile) {
+    gameScreen.hasLoaded = false;
+
     XMLHttpRequest xhr = new XMLHttpRequest();
     xhr.open("GET", levelFile, true);
     xhr.on.load.add((e) {
@@ -24,9 +31,8 @@ class ScreenLoader {
         alien.setPathEndBehaviour(MovingObject.PATH_END_REPEAT);
         gameScreen.addChild(alien);
       }
+      gameScreen.hasLoaded = true;
     });
     xhr.send();
-
-    return gameScreen;
   }
 }

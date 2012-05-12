@@ -1,0 +1,8 @@
+{
+	"aliens" : [		
+		{ "image" : "img/Space Invaders 2.png", "speed" : 100, "points" : 25, "path" : [[50, 200], [400, 400], [800, 200], [400, 400]]},
+		{ "image" : "img/Space Invaders 2.png", "speed" : 100, "points" : 25, "path" : [[50, 300], [400, 500], [800, 300], [400, 500]]},
+		{ "image" : "img/Space Invaders 2.png", "speed" : 100, "points" : 25, "path" : [[50, 400], [400, 200], [800, 400], [400, 200]]},
+		{ "image" : "img/Space Invaders 2.png", "speed" : 100, "points" : 25, "path" : [[50, 500], [400, 300], [800, 500], [400, 300]]}
+	]
+}
