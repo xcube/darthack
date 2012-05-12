@@ -24,6 +24,7 @@ class Bomb extends AnimatedImageObject implements Weapon{
   }
 
   void detectCollision() {
+//    try {
     if(collide(gameContext.getPlayerShip())) {
       bool lostLife = gameContext.getPlayerShip().takeHitFrom(this);
 
@@ -33,5 +34,7 @@ class Bomb extends AnimatedImageObject implements Weapon{
       }
       remove();
     }
+//  } catch (final Exception e) {
+//  }
   }
 }

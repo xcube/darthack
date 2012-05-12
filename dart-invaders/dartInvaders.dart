@@ -25,19 +25,28 @@
 class dartInvaders {
 
   static final int REFRESH_INTERVAL = 25;
+  static final int COUNTDOWN_AMOUNT = 100;
 
   int frameCount = 1;
   GameContext gameContext;
   GameScreen gameScreen;
   int lastTime;
   int currentLevel;
+  bool levelChange;
+  int levelCountdown;
+  GameObject banner;
   List<String> levels;
 
   dartInvaders() {
     currentLevel = 0;
+    levelChange = false;
+    levelCountdown = 0;
+    banner = null;
     levels = [ "resources/level1.json", "resources/level2.json" ];
     Player player = new Player();
-    gameContext = new GameContext(player);
+
+    GameSounds gameSounds = new GameSounds();
+    GameContext gameContext = new GameContext(player, gameSounds);
     lastTime = Util.currentTimeMillis();
 
     gameScreen = ScreenLoader.loadScreen(gameContext, levels[currentLevel]);
@@ -46,9 +55,6 @@ class dartInvaders {
     ScorePanel scorePanel = new ScorePanel(gameContext, player);
     gameScreen.addChild(scorePanel);
     gameScreen.addChild(playerShip);
-
-    GameSounds gameSounds = new GameSounds();
-    gameSounds.playExplosion();
   }
 
   void startGame() {
@@ -62,13 +68,31 @@ class dartInvaders {
     lastTime = now;
     gameScreen.tick(delta);
 
-    if (gameScreen.hasLoaded && (0 == aliensRemaining())) {
-      ++currentLevel;
-      if (currentLevel == levels.length) {
-        // game complete
-        gameContext.player.gameOver("YOU WON!!! :-)");
-      } else {
+    if (levelChange) {
+      --levelCountdown;
+      if (levelCountdown < 0) {
+        if (null != banner) {
+          gameScreen.removeChild(banner);
+          banner = null;
+        }
         ScreenLoader.loadNewLevel(gameContext, gameScreen, levels[currentLevel]);
+        levelChange = false;
+      }
+    } else {
+      if (gameScreen.hasLoaded && (0 == aliensRemaining())) {
+        ++currentLevel;
+        if (currentLevel == levels.length) {
+          // game complete
+          gameContext.player.gameOver("YOU WON!!! :-)");
+        } else {
+          levelChange = true;
+          levelCountdown = COUNTDOWN_AMOUNT;
+
+          int centerX = (screen.width / 2) - 150;
+          int centerY = screen.height / 2;
+          banner = new TextObject(gameContext, "LEVEL ${currentLevel+1}", '#CD2626', 'bold 48px sans-serif', centerX, centerY);
+          gameScreen.addChild(banner);
+        }
       }
     }
 

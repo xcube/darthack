@@ -5,8 +5,9 @@ class GameContext {
   CanvasElement canvas;
   Player player;
   GameScreen screen;
+  GameSounds gameSounds;
 
-  GameContext(Player player) {
+  GameContext(Player player, GameSounds this.gameSounds) {
     this.canvas = document.query('#game-canvas');
     this.ctx = canvas.getContext("2d");
     this.player = player;
