@@ -17,11 +17,11 @@ class Missile extends Bomb {
           // create explosion
           Explosion exp = new Explosion(gameContext, gameObject.pos.x, gameObject.pos.y);
           parent.addChild(exp);
+          // increment score
+          player.scoreHit(gameObject);
           // remove missile and alien ship
           remove();
           gameObject.remove();
-          // increment score
-          // TODO
           break;
         }
       }
