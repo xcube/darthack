@@ -1,4 +1,5 @@
 #import('dart:html');
+#import('dart:json');
 #source('dart/GameObject.dart');
 #source('dart/Container.dart');
 #source('dart/ContainerImpl.dart');
@@ -18,7 +19,7 @@
 #source('dart/Weapon.dart');
 #source('dart/ScorePanel.dart');
 #source('dart/Missile.dart');
-
+#source('dart/ScreenLoader.dart');
 
 class dartInvaders {
 
@@ -33,7 +34,7 @@ class dartInvaders {
     GameContext gameContext = new GameContext(player);
     lastTime = Util.currentTimeMillis();
 
-    gameScreen = new GameScreen(gameContext);
+    gameScreen = ScreenLoader.loadScreen(gameContext, "resources/level1.json");
 
     PlayerShip playerShip = new PlayerShip(gameContext, player);
     ScorePanel scorePanel = new ScorePanel(gameContext, player);
