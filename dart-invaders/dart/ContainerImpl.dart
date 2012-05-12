@@ -1,14 +1,14 @@
 class ContainerImpl extends GameObject implements Container {
   List<GameObject> children;
-  
+
   ContainerImpl(GameContext gameContext, int x, int y, int width, int height) : super(gameContext, x, y, width, height) {
     this.children = new List<GameObject>();
   }
-  
+
   bool hasChildren() {
     return children.length > 0;
   }
-  
+
   int findChild(GameObject gameObject) {
     int index = -1;
     for (int x=0; x<children.length; ++x) {
@@ -19,30 +19,32 @@ class ContainerImpl extends GameObject implements Container {
     }
     return index;
   }
-  
+
   void addChild(GameObject gameObject) {
     this.children.add(gameObject);
+    gameObject.parent = this;
   }
-  
+
   void removeChild(GameObject gameObject) {
     int childIndex = findChild(gameObject);
     if (-1 != childIndex) {
       children.removeRange(childIndex, 1);
+      gameObject.parent = null;
     }
   }
-  
+
   void paintChildren() {
     for(GameObject child in children) {
       child.paint();
     }
   }
-  
+
   void tickChildren(double delta) {
     for(GameObject child in children) {
       child.tick(delta);
     }
   }
-  
+
   int minX() {
     return Util.findMin(children, (c) => c.minX());
   }

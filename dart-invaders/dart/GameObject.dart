@@ -4,17 +4,30 @@ class GameObject {
   Point pos;
   int width, height;
   GameContext gameContext;
-  
+  GameObject parent;
+
   GameObject(GameContext this.gameContext, int x, int y, int this.width, int this.height) {
     this.pos = new Point(x, y);
+    this.parent = null;
   }
 
   void paint() {
-    
+    // implemented by sub-classes
   }
 
   void tick(double delta) {
-    
+    // implemented by sub-classes
+  }
+
+  /* instruct object to remove itself from its parent if it has one*/
+  void remove() {
+    if (null != parent) {
+      try {
+        parent.removeChild(this);
+      } catch (final NoSuchMethodException e) {
+        // remove object failed
+      }
+    }
   }
 
   /* check whether the given game object collides with this one */
@@ -32,7 +45,7 @@ class GameObject {
         (other.minY() > this.minY()) &&
         (other.maxY() < this.maxY()));
   }
-  
+
   int minX() => pos.x;
   int maxX() => pos.x + width;
   int minY() => pos.y;
