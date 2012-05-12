@@ -10,7 +10,7 @@ class GameSounds {
     AudioContext audioContext = new AudioContext();
     AudioGainNode gainNode = audioContext.createGainNode();
     XMLHttpRequest xhr = new XMLHttpRequest();
-    xhr.open("GET", "sound/explosion.mp3", true);
+    xhr.open("GET", "sound/explosion.ogg", true);
     xhr.responseType = "arraybuffer";
 
     xhr.on.load.add((e) {
@@ -23,12 +23,12 @@ class GameSounds {
           source.buffer = buffer;
           source.noteOn(0);
         }
-        //playSound();
+        playSound();
       }, (error) {
-        print('Error decoding MP3 file');
+        print('Error decoding ogg file');
       });
     });
 
-    //xhr.send();
+    xhr.send();
   }
 }
