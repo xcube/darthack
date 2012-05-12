@@ -3,14 +3,19 @@
 #source('dart/Container.dart');
 #source('dart/ContainerImpl.dart');
 #source('dart/MovingObject.dart');
-#source('dart/AnimatedImageObject.dart');
 #source('dart/GameScreen.dart');
 #source('dart/Ship.dart');
+#source('dart/AnimatedImageObject.dart');
+#source('dart/PathAnimatedImageObject.dart');
+#source('dart/Bomb.dart');
 #source('dart/AlienShip.dart');
 #source('dart/PlayerShip.dart');
 #source('dart/GameContext.dart');
 #source('dart/Util.dart');
 #source('dart/GameSounds.dart');
+#source('dart/Player.dart');
+#source('dart/Weapon.dart');
+#source('dart/ScorePanel.dart');
 
 
 class dartInvaders {
@@ -23,13 +28,14 @@ class dartInvaders {
 
   dartInvaders() {
     GameContext gameContext = new GameContext();
-    // TODO - play main music instead
-    gameContext.gameSounds.playExplosion();
 
     lastTime = Util.currentTimeMillis();
 
     gameScreen = new GameScreen(gameContext);
-    PlayerShip playerShip = new PlayerShip(gameContext);
+    Player player = new Player(gameContext);
+    PlayerShip playerShip = new PlayerShip(gameContext, player);
+    ScorePanel scorePanel = new ScorePanel(gameContext, player);
+    gameScreen.addChild(scorePanel);
     gameScreen.addChild(playerShip);
 
     List<Point> alienPath = [new Point(100, 100), new Point(300, 50), new Point(400, 100), new Point(450, 150),  new Point(400, 200),
@@ -44,7 +50,7 @@ class dartInvaders {
   }
 
   void update() {
-    write((++frameCount).toString());
+    ++frameCount;
     int now = Util.currentTimeMillis();
     double delta = Math.min((now - lastTime) / 1000.0, 0.1);
     lastTime = now;
@@ -57,10 +63,6 @@ class dartInvaders {
     startGame();
   }
 
-  void write(String message) {
-    // the HTML library defines a global "document" variable
-    document.query('#status').innerHTML = message;
-  }
 }
 
 void main() {
