@@ -60,4 +60,8 @@ class GameObject {
     pos.x += xUnits;
     pos.y += yUnits;
   }
+
+  void blink() {
+
+  }
 }

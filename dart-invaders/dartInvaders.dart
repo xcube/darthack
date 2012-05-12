@@ -43,6 +43,7 @@ class dartInvaders {
     lastTime = now;
     gameScreen.tick(delta);
     gameScreen.paint();
+
   }
 
   void run() {
