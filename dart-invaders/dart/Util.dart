@@ -28,4 +28,14 @@ class Util {
   static double toRad(int deg) {
     return deg * Math.PI / 180;
   }
+
+  /* attempt to compensate for the fact that dart's Math.random() is unbelievably bad
+  http://code.google.com/p/dart/issues/detail?id=499&q=random&colspec=ID%20Type%20Status%20Priority%20Area%20Milestone%20Owner%20Summary */
+  static double random() {
+    double rnd = ((currentTimeMillis() % 1000) * Math.random()) / 500;
+    if (rnd > 1.0) {
+      rnd = rnd-0.5;
+    }
+    return rnd;
+  }
 }
