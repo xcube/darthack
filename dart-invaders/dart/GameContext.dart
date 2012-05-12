@@ -4,6 +4,7 @@ class GameContext {
   CanvasRenderingContext2D ctx;
   CanvasElement canvas;
   Player player;
+  GameScreen screen;
 
   GameContext(Player player) {
     this.canvas = document.query('#game-canvas');
@@ -13,5 +14,9 @@ class GameContext {
 
   PlayerShip getPlayerShip() {
     return player.ship;
+  }
+
+  GameScreen getScreen() {
+    return screen;
   }
 }
