@@ -9,6 +9,10 @@ class ContainerImpl extends GameObject implements Container {
     return children.length > 0;
   }
 
+  List<GameObject> getChildren() {
+    return children;
+  }
+
   int findChild(GameObject gameObject) {
     int index = -1;
     for (int x=0; x<children.length; ++x) {
