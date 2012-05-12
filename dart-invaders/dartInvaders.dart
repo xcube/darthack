@@ -6,6 +6,7 @@
 #source('dart/GameScreen.dart');
 #source('dart/Ship.dart');
 #source('dart/PlayerShip.dart');
+#source('dart/GameContext.dart');
 #source('dart/Util.dart');
 
 
@@ -18,9 +19,12 @@ class dartInvaders {
   int lastTime;
 
   dartInvaders() {
+    GameContext gameContext = new GameContext();
     lastTime = Util.currentTimeMillis();
-    gameScreen = new GameScreen();
-    gameScreen.addChild(new PlayerShip());
+
+    gameScreen = new GameScreen(gameContext);
+    PlayerShip playerShip = new PlayerShip(gameContext);
+    gameScreen.addChild(playerShip);
   }
 
   void startGame() {

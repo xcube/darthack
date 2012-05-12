@@ -3,26 +3,26 @@ class GameScreen extends ContainerImpl  {
   
   bool showRefreshRate;
   
-  GameScreen() : super(0, 0, 800, 600) {
+  GameScreen(GameContext gameContext) : super(gameContext, 0, 0, 800, 600) {
     this.showRefreshRate = false;
   }
   
-  GameScreen.Options(bool this.showRefreshRate) : super(0, 0, 800, 600) {
+  GameScreen.Options(GameContext gameContext, bool this.showRefreshRate) : super(gameContext, 0, 0, 800, 600) {
     this.children = new List<GameObject>();
   }
 
   void paint() {
-    ctx.beginPath();
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = '#ffffff';
-    ctx.strokeStyle = '#000000';
-    ctx.fillRect(pos.x, pos.y, width, height);
-    
-    ctx.rect(pos.x, pos.y, width, height);
-    ctx.fillStyle = '#000000';
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
+    gameContext.ctx.beginPath();
+    gameContext.ctx.clearRect(0, 0, width, height);
+    gameContext.ctx.fillStyle = '#ffffff';
+    gameContext.ctx.strokeStyle = '#000000';
+    gameContext.ctx.fillRect(pos.x, pos.y, width, height);
+
+    gameContext.ctx.rect(pos.x, pos.y, width, height);
+    gameContext.ctx.fillStyle = '#000000';
+    gameContext.ctx.fill();
+    gameContext.ctx.stroke();
+    gameContext.ctx.closePath();
     
     paintChildren();
   }
