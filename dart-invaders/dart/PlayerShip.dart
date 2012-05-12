@@ -24,7 +24,7 @@ class PlayerShip extends Ship {
       } else if (action == KEY_RIGHT) {
         translate(1, 0);
       } else if (action == KEY_SPACE) {
-        Missile missile = new Missile(gameContext, pos.x + 16, pos.y - 50, 40);
+        Missile missile = new Missile(gameContext, pos.x + 6, pos.y - 7, 40);
         parent.addChild(missile);
       }
     });

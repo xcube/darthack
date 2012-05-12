@@ -12,7 +12,13 @@ class Missile extends Bomb {
     List<GameObject> gameObjects = parent.getChildren();
     for (GameObject gameObject in gameObjects) {
       if (gameObject is AlienShip) {
-        // TODO
+        if(collide(gameObject)) {
+          Explosion exp = new Explosion(gameContext, gameObject.pos.x, gameObject.pos.y);
+          parent.addChild(exp);
+          remove();
+          gameObject.remove();
+          break;
+        }
       }
     }
   }
