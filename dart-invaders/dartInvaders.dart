@@ -5,6 +5,7 @@
 #source('dart/MovingObject.dart');
 #source('dart/GameScreen.dart');
 #source('dart/Ship.dart');
+#source('dart/AlienShip.dart');
 #source('dart/PlayerShip.dart');
 #source('dart/GameContext.dart');
 #source('dart/Util.dart');

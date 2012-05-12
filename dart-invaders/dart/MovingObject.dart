@@ -1,17 +1,17 @@
 class MovingObject extends GameObject {
-  
+
   Point delta; // speed in units/second
   List<Point> path;
   int pathIndex;
   double pathSpeed;
   double timeToNextPoint;
-  
+
   MovingObject(GameContext gameContext, int x, int y, int width, int height, Point delta) : super(gameContext, x, y, width, height) {
     this.delta = new Point(delta.x, delta.y);
     this.path = null;
   }
-  
-  MovingObject.path(width, height, List<Point> wayPoints, double speed) {
+
+  MovingObject.path(GameContext gameContext, int width, int height, List<Point> wayPoints, double speed) {
     this.path = wayPoints;
     this.pathSpeed = speed;
     this.pathIndex = 1;
@@ -19,11 +19,11 @@ class MovingObject extends GameObject {
     this.pos.y = path[0].y;
     nextPathElement(path[1]);
   }
-  
+
   void tick(timeSinceLastTick) {
     pos.x += timeSinceLastTick * delta.x;
     pos.y += timeSinceLastTick * delta.y;
-    
+
     if (null != path) {
       timeToNextPoint -= timeSinceLastTick;
       if (timeToNextPoint < 0) {
@@ -32,7 +32,7 @@ class MovingObject extends GameObject {
       }
     }
   }
-  
+
   void nextPathElement(Point step) {
     double dx = pos.x - step.x;
     double dy = pos.y - step.y;
