@@ -26,6 +26,7 @@ class dartInvaders {
   static final int REFRESH_INTERVAL = 25;
 
   int frameCount = 1;
+  GameContext gameContext;
   GameScreen gameScreen;
   int lastTime;
   int currentLevel;
@@ -35,7 +36,7 @@ class dartInvaders {
     currentLevel = 0;
     levels = [ "resources/level1.json" ];
     Player player = new Player();
-    GameContext gameContext = new GameContext(player);
+    gameContext = new GameContext(player);
     lastTime = Util.currentTimeMillis();
 
     gameScreen = ScreenLoader.loadScreen(gameContext, levels[currentLevel]);
@@ -59,8 +60,27 @@ class dartInvaders {
     double delta = Math.min((now - lastTime) / 1000.0, 0.1);
     lastTime = now;
     gameScreen.tick(delta);
+
+    if (0 == aliensRemaining()) {
+      ++currentLevel;
+      if (currentLevel == levels.length) {
+        // game complete
+        gameContext.player.gameOver("YOU WON!!! :-)");
+      }
+    }
+
     gameScreen.paint();
 
+  }
+
+  int aliensRemaining() {
+    int count = 0;
+    for (GameObject x in gameScreen.getChildren()) {
+      if (x is AlienShip) {
+        ++count;
+      }
+    }
+    return count;
   }
 
   void run() {
