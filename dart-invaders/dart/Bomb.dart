@@ -7,6 +7,10 @@ class Bomb extends AnimatedImageObject implements Weapon{
     this.damage = 25;
   }
 
+  Bomb.image(GameContext gameContext, int x, int y,  int speed, String image) : super(gameContext, x, y, 20, 20, new Point(0, speed), image) {
+    this.damage = 25;
+  }
+
   void tick(double delta) {
     super.tick(delta);
     detectCollision();
