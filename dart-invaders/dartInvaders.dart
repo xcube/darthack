@@ -1,10 +1,11 @@
 #import('dart:html');
 #source('dart/GameObject.dart');
+#source('dart/Container.dart');
+#source('dart/ContainerImpl.dart');
 #source('dart/MovingObject.dart');
 #source('dart/GameScreen.dart');
 #source('dart/Ship.dart');
 #source('dart/PlayerShip.dart');
-#source('dart/Container.dart');
 #source('dart/GameContext.dart');
 
 
@@ -14,9 +15,11 @@ class dartInvaders {
 
   int frameCount = 1;
   GameScreen gameScreen;
+  int lastTime;
 
   dartInvaders() {
     GameContext gameContext = new GameContext();
+    lastTime = Util.currentTimeMillis();
 
     gameScreen = new GameScreen(gameContext);
     PlayerShip playerShip = new PlayerShip(gameContext);
@@ -29,6 +32,10 @@ class dartInvaders {
 
   void update() {
     write((++frameCount).toString());
+    int now = Util.currentTimeMillis();
+    double delta = Math.min((now - lastTime) / 1000.0, 0.1);
+    lastTime = now;
+    gameScreen.tick(delta);
     gameScreen.paint();
   }
 
