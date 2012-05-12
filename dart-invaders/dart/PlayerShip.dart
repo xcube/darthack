@@ -41,22 +41,19 @@ class PlayerShip extends Ship {
     });
   }
 
+  /*
   void paint() {
-    if(player.hasLowEnergy() && (lastPaint == 0 || lastPaint > Util.currentTimeMillis() - BLINK_RATE_MILIS)) {
+    if(player.hasLowEnergy() && (lastPaint == 0 || lastPaint < (Util.currentTimeMillis() - BLINK_RATE_MILIS))) {
         print('Hidding ship....');
-        gameContext.ctx.beginPath();
-        gameContext.ctx.clearRect(pos.x, pos.y, width, height);
-
-        gameContext.ctx.rect(pos.x, pos.y, width, height);
-        gameContext.ctx.strokeStyle = '#99cc33';
-        gameContext.ctx.stroke();
-        gameContext.ctx.closePath();
+        loadBitmap('img/hidden.png');
+        lastPaint = Util.currentTimeMillis();
     } else {
-      super.paint();
+      print('Showing ship....');
+      loadBitmap('img/Space Invaders 1.png');
     }
-    lastPaint = Util.currentTimeMillis();;
-  }
 
+  }
+  */
   bool takeHitFrom(Weapon weapon) {
       return player.takeHitFrom(weapon);
   }
