@@ -16,4 +16,5 @@ class AlienShip extends Ship {
     pos.x = mover.pos.x;
     pos.y = mover.pos.y;
   }
+
 }

@@ -9,6 +9,9 @@
 #source('dart/PlayerShip.dart');
 #source('dart/GameContext.dart');
 #source('dart/Util.dart');
+#source('dart/Player.dart');
+#source('dart/Weapon.dart');
+#source('dart/ScorePanel.dart');
 
 
 class dartInvaders {
@@ -24,7 +27,10 @@ class dartInvaders {
     lastTime = Util.currentTimeMillis();
 
     gameScreen = new GameScreen(gameContext);
-    PlayerShip playerShip = new PlayerShip(gameContext);
+    Player player = new Player(gameContext);
+    PlayerShip playerShip = new PlayerShip(gameContext, player);
+    ScorePanel scorePanel = new ScorePanel(gameContext, player);
+    gameScreen.addChild(scorePanel);
     gameScreen.addChild(playerShip);
   }
 
