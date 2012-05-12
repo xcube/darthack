@@ -15,13 +15,4 @@ class Ship extends GameObject {
     gameContext.ctx.closePath();
   }
 
-  void rotate(num deg) {
-    gameContext.ctx.rotate(Util.toRad(deg));
-  }
-
-  void translate(int xUnits, yUnits) {
-    pos.x += xUnits;
-    pos.y += yUnits;
-  }
-
 }

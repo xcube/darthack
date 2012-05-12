@@ -4,17 +4,17 @@ class GameObject {
   Point pos;
   int width, height;
   GameContext gameContext;
-  
+
   GameObject(GameContext this.gameContext, int x, int y, int this.width, int this.height) {
     this.pos = new Point(x, y);
   }
 
   void paint() {
-    
+
   }
 
   void tick(double delta) {
-    
+
   }
 
   /* check whether the given game object collides with this one */
@@ -32,9 +32,18 @@ class GameObject {
         (other.minY() > this.minY()) &&
         (other.maxY() < this.maxY()));
   }
-  
+
   int minX() => pos.x;
   int maxX() => pos.x + width;
   int minY() => pos.y;
   int maxY() => pos.y + height;
+
+  void rotate(num deg) {
+    gameContext.ctx.rotate(Util.toRad(deg));
+  }
+
+  void translate(int xUnits, yUnits) {
+    pos.x += xUnits;
+    pos.y += yUnits;
+  }
 }
