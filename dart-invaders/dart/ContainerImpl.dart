@@ -9,8 +9,26 @@ class ContainerImpl extends GameObject implements Container {
     return children.length > 0;
   }
   
+  int findChild(GameObject gameObject) {
+    int index = -1;
+    for (int x=0; x<children.length; ++x) {
+      if (children[x] === gameObject) {
+        index = x;
+        break;
+      }
+    }
+    return index;
+  }
+  
   void addChild(GameObject gameObject) {
     this.children.add(gameObject);
+  }
+  
+  void removeChild(GameObject gameObject) {
+    int childIndex = findChild(gameObject);
+    if (-1 != childIndex) {
+      children.removeRange(childIndex, 1);
+    }
   }
   
   void paintChildren() {
@@ -26,23 +44,15 @@ class ContainerImpl extends GameObject implements Container {
   }
   
   int minX() {
-    int min = -1;
-    for (GameObject c in children) {
-      int cmin = c.minX();
-      if (cmin < min) {
-        min = cmin;
-      }
-    }
-    return min;
+    return Util.findMin(children, (c) => c.minX());
   }
-  
   int maxX() {
-    
+    return Util.findMax(children, (c) => c.maxX());
   }
   int minY() {
-    
+    return Util.findMin(children, (c) => c.minY());
   }
   int maxY() {
-    
+    return Util.findMin(children, (c) => c.minX());
   }
 }
