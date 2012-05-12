@@ -8,7 +8,7 @@ class MovingObject extends GameObject {
   List<Point> path;
   int pathIndex;
   double pathSpeed;
-  double timeToNextPoint;
+  double timeToNextPoint = 0.0;
   int pathEndBehaviour;
   bool moving;
 
@@ -19,7 +19,8 @@ class MovingObject extends GameObject {
     this.moving = true;
   }
 
-  MovingObject.path(GameContext gameContext, int width, int height, List<Point> wayPoints, double speed) {
+  MovingObject.path(GameContext gameContext, int width, int height, List<Point> wayPoints, double speed) : super(gameContext, 0, 0, width, height) {
+    this.delta = new Point(0, 0);
     this.path = wayPoints;
     this.pathSpeed = speed;
     this.pathIndex = 1;
@@ -30,7 +31,7 @@ class MovingObject extends GameObject {
     this.moving = true;
   }
 
-  void tick(timeSinceLastTick) {
+  void tick(double timeSinceLastTick) {
     if (moving) {
       pos.x += timeSinceLastTick * delta.x;
       pos.y += timeSinceLastTick * delta.y;

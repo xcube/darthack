@@ -13,7 +13,7 @@
 
 class dartInvaders {
 
-  static final int REFRESH_INTERVAL = 250;
+  static final int REFRESH_INTERVAL = 25;
 
   int frameCount = 1;
   GameScreen gameScreen;
@@ -26,6 +26,10 @@ class dartInvaders {
     gameScreen = new GameScreen(gameContext);
     PlayerShip playerShip = new PlayerShip(gameContext);
     gameScreen.addChild(playerShip);
+
+    List<Point> alienPath = [new Point(100, 100), new Point(200, 100), new Point(200, 200), new Point(100, 200)];
+    AlienShip alien = new AlienShip(gameContext, 10, 10, alienPath, 10.0);
+    gameScreen.addChild(alien);
   }
 
   void startGame() {
