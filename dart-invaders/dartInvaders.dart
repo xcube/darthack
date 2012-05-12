@@ -12,6 +12,7 @@
 #source('dart/PlayerShip.dart');
 #source('dart/GameContext.dart');
 #source('dart/Util.dart');
+#source('dart/GameSounds.dart');
 #source('dart/Player.dart');
 #source('dart/Weapon.dart');
 #source('dart/ScorePanel.dart');
@@ -26,8 +27,13 @@ class dartInvaders {
   int lastTime;
 
   dartInvaders() {
+<<<<<<< HEAD
     Player player = new Player();
     GameContext gameContext = new GameContext(player);
+=======
+    GameContext gameContext = new GameContext();
+
+>>>>>>> 6fa0849d4327b30c939331b495c054c081d876d9
     lastTime = Util.currentTimeMillis();
 
     gameScreen = new GameScreen(gameContext);
