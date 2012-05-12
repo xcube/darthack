@@ -13,12 +13,12 @@ class dartInvaders {
 
   int frameCount = 1;
   List<GameObject> gameObjects;
-  GameObject frame;
+  GameScreen gameScreen;
 
   dartInvaders() {
     gameObjects = new List<GameObject>();
-    frame = new GameScreen();
-    frame.addChild(new PlayerShip());
+    gameScreen = new GameScreen();
+    gameScreen.addChild(new PlayerShip());
   }
 
   void startGame() {
@@ -27,7 +27,7 @@ class dartInvaders {
 
   void update() {
     write((++frameCount).toString());
-    frame.paint();
+    gameScreen.paint();
   }
 
   void run() {
