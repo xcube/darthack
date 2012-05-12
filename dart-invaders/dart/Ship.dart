@@ -7,7 +7,7 @@ class Ship extends GameObject {
 
   void paint() {
     gameContext.ctx.beginPath();
-    gameContext.ctx.clearRect(0, 0, width, height);
+    gameContext.ctx.clearRect(pos.x, pos.y, width, height);
 
     gameContext.ctx.rect(pos.x, pos.y, width, height);
     gameContext.ctx.strokeStyle = '#99cc33';
@@ -17,6 +17,11 @@ class Ship extends GameObject {
 
   void rotate(num deg) {
     gameContext.ctx.rotate(Util.toRad(deg));
+  }
+
+  void translate(int xUnits, yUnits) {
+    pos.x += xUnits;
+    pos.y += yUnits;
   }
 
 }
