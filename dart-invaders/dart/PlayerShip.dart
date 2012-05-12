@@ -7,7 +7,7 @@ class PlayerShip extends Ship {
   static final int KEY_RIGHT = 39;
   static final int KEY_SPACE = 32;
 
-  PlayerShip(GameContext gameContext) : super(gameContext, 0, 0, WIDTH, HEIGHT) {
+  PlayerShip(GameContext gameContext) : super(gameContext, 0, 0, WIDTH, HEIGHT, 'img/Space Invaders 1.png') {
 
     // place player ship at the bottom in the middle
     pos.y = gameContext.canvas.height - HEIGHT;
@@ -25,4 +25,5 @@ class PlayerShip extends Ship {
       }
     });
   }
+
 }
