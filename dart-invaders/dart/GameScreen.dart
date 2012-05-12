@@ -1,12 +1,12 @@
 
 class GameScreen extends ContainerImpl  {
-  
+
   bool showRefreshRate;
-  
+
   GameScreen(GameContext gameContext) : super(gameContext, 0, 0, 800, 600) {
     this.showRefreshRate = false;
   }
-  
+
   GameScreen.Options(GameContext gameContext, bool this.showRefreshRate) : super(gameContext, 0, 0, 800, 600) {
     this.children = new List<GameObject>();
   }
@@ -23,15 +23,20 @@ class GameScreen extends ContainerImpl  {
     gameContext.ctx.fill();
     gameContext.ctx.stroke();
     gameContext.ctx.closePath();
-    
+
     paintChildren();
   }
 
   void tick(delta) {
     tickChildren(delta);
   }
-  
 
-  
+  void rotate(num deg) {
+    // Do nothing
+  }
+
+  void translte(int xUnits, int yUnits) {
+    // Do nothing
+  }
 
 }

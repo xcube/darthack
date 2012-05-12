@@ -4,6 +4,7 @@ class GameObject {
   Point pos;
   int width, height;
   GameContext gameContext;
+
   GameObject parent;
 
   GameObject(GameContext this.gameContext, int x, int y, int this.width, int this.height) {
@@ -50,4 +51,13 @@ class GameObject {
   int maxX() => pos.x + width;
   int minY() => pos.y;
   int maxY() => pos.y + height;
+
+  void rotate(num deg) {
+    gameContext.ctx.rotate(Util.toRad(deg));
+  }
+
+  void translate(int xUnits, yUnits) {
+    pos.x += xUnits;
+    pos.y += yUnits;
+  }
 }
