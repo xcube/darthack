@@ -46,7 +46,7 @@ class dartInvaders {
     Player player = new Player(3, 130);
 
     GameSounds gameSounds = new GameSounds();
-    GameContext gameContext = new GameContext(player, gameSounds);
+    gameContext = new GameContext(player, gameSounds);
     lastTime = Util.currentTimeMillis();
 
     gameScreen = ScreenLoader.loadScreen(gameContext, levels[currentLevel]);
@@ -66,6 +66,9 @@ class dartInvaders {
     int now = Util.currentTimeMillis();
     double delta = Math.min((now - lastTime) / 1000.0, 0.1);
     lastTime = now;
+    if(levelChange && levelCountdown < 0) {
+      print("About to change level...");
+    }
     gameScreen.tick(delta);
 
     if (levelChange) {
